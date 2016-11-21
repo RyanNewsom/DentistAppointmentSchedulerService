@@ -7,6 +7,26 @@ import org.springframework.data.annotation.Id;
  */
 public class Office {
     @Id
-    private int id;
+    private String id;
     private ContactInfo contactInfo;
+
+    public Office(ContactInfo contactInfo){
+        this.contactInfo = contactInfo;
+    }
+
+    public void setOfficeId(String id) {
+        this.id = id;
+    }
+
+    public String getOfficeId() {
+        return id;
+    }
+
+    @Override
+    public String toString() {
+        return "Office{" +
+                "id='" + id + '\'' +
+                ", contactInfo=" + contactInfo +
+                '}';
+    }
 }

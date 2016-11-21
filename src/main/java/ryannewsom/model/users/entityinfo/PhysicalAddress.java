@@ -7,7 +7,7 @@ import org.springframework.data.annotation.Id;
  */
 public class PhysicalAddress {
     @Id
-    private int id;
+    private String id;
     private int streetNumber;
     private String street;
     private int zipCode;
@@ -20,5 +20,13 @@ public class PhysicalAddress {
         this.city = city;
         this.state = state;
         this.zipCode = zipCode;
+    }
+
+    public void setPhysicalAddressId(String id) {
+        this.id = id;
+    }
+
+    public String getPhysicalAddressId() {
+        return id;
     }
 }

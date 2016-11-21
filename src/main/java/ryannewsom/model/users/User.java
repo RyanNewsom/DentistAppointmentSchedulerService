@@ -1,14 +1,15 @@
 package ryannewsom.model.users;
 
+import org.springframework.data.mongodb.core.mapping.Document;
 import ryannewsom.model.users.entityinfo.ContactInfo;
 import org.springframework.data.annotation.Id;
+
 
 /**
  * User
  */
+@Document
 public class User {
-    @Id
-    protected int id;
     private String firstName;
     private String lastName;
     private ContactInfo contactInfo;
@@ -19,11 +20,11 @@ public class User {
         this.contactInfo = contactInfo;
     }
 
+
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
+                "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", contactInfo=" + contactInfo +
                 '}';
