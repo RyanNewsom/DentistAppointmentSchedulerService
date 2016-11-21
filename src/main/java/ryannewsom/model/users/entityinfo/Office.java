@@ -1,5 +1,6 @@
 package ryannewsom.model.users.entityinfo;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 
 /**
@@ -12,14 +13,15 @@ public class Office {
 
     public Office(ContactInfo contactInfo){
         this.contactInfo = contactInfo;
-    }
-
-    public void setOfficeId(String id) {
-        this.id = id;
+        this.id = ObjectId.get().toString();
     }
 
     public String getOfficeId() {
         return id;
+    }
+
+    public ContactInfo getContactInfo() {
+        return contactInfo;
     }
 
     @Override

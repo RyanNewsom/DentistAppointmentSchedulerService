@@ -9,8 +9,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
  */
 @Document
 public class ContactInfo {
-    @Id
-    private String id;
     private String cellNumber;
     private PhysicalAddress physicalAddress;
 
@@ -19,11 +17,11 @@ public class ContactInfo {
         this.physicalAddress = physicalAddress;
     }
 
-    public void setContactInfoId(String id) {
-        this.id = id;
-    }
-
-    public String getGontactInfoId(){
-        return id;
+    @Override
+    public String toString() {
+        return "ContactInfo{" +
+                "cellNumber='" + cellNumber + '\'' +
+                ", physicalAddress=" + physicalAddress +
+                '}';
     }
 }

@@ -16,14 +16,22 @@ public class Appointment {
 
     @Id
     private String id;
-    public User user;
-    public Date time;
-    public Office office;
+    private User user;
+    private Date time;
+    private Office office;
 
     public Appointment(User user, Date time, Office office){
         this.user = user;
         this.time = time;
         this.office = office;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public User getUser() {
+        return user;
     }
 
     public void setAppointmentId(final String id) {
