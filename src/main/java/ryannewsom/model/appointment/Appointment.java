@@ -34,6 +34,14 @@ public class Appointment {
         return user;
     }
 
+    public Date getTime() {
+        return time;
+    }
+
+    public Office getOffice() {
+        return office;
+    }
+
     public void setAppointmentId(final String id) {
         this.id = id;
     }
