@@ -19,4 +19,24 @@ public class PhysicalAddress {
         this.state = state;
         this.zipCode = zipCode;
     }
+
+    public int getStreetNumber() {
+        return streetNumber;
+    }
+
+    public int getZipCode() {
+        return zipCode;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public String getStreet() {
+        return street;
+    }
 }

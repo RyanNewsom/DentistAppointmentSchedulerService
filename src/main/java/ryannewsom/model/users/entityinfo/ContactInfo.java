@@ -17,6 +17,14 @@ public class ContactInfo {
         this.physicalAddress = physicalAddress;
     }
 
+    public String getCellNumber() {
+        return cellNumber;
+    }
+
+    public PhysicalAddress getPhysicalAddress() {
+        return physicalAddress;
+    }
+
     @Override
     public String toString() {
         return "ContactInfo{" +
