@@ -13,10 +13,7 @@ import ryannewsom.model.users.User;
 import ryannewsom.model.users.entityinfo.ContactInfo;
 import ryannewsom.model.users.entityinfo.Office;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Controller
 @SpringBootApplication
@@ -94,6 +91,7 @@ public class DentistApplication implements CommandLineRunner {
 
     //Seeds Appointments for 1 year from Nov/17/2016
     private void seedAppointments() {
+        final Office office = new Office(new ContactInfo("3034541287", MockAddresses.OFFICE_1_ADDRESS));
         final long START_TIME = 1479654000000l;
         long ONE_YEAR_MS;
         long ONE_HOUR_MS = 3600000;
@@ -114,7 +112,7 @@ public class DentistApplication implements CommandLineRunner {
             if(dayOfWeek >= 2 && dayOfWeek <=6){
                 if(hourOfDay >= 8 && hourOfDay <= 17){
                     System.out.println("Seeding...");
-                    Appointment appointment = new Appointment(null, current, new Office(new ContactInfo("3034541287", MockAddresses.OFFICE_1_ADDRESS)));
+                    Appointment appointment = new Appointment(null, current, office);
                     appointmentService.save(appointment);
                 }
             }
