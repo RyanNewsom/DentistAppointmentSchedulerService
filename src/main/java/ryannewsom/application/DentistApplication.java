@@ -105,6 +105,7 @@ public class DentistApplication implements CommandLineRunner {
             Date current = new Date(i);
 
             calendar.setTime(current);
+            calendar.setTimeZone(TimeZone.getTimeZone("America/Denver"));
             int hourOfDay = calendar.get(Calendar.HOUR_OF_DAY);
             int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
 
