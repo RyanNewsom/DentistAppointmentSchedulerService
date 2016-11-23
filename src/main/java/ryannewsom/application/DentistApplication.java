@@ -91,6 +91,7 @@ public class DentistApplication implements CommandLineRunner {
 
     //Seeds Appointments for 1 year from Nov/17/2016
     private void seedAppointments() {
+        //test comment
         final Office office = new Office(new ContactInfo("3034541287", MockAddresses.OFFICE_1_ADDRESS));
         final long START_TIME = 1479654000000l;
         long ONE_YEAR_MS;
