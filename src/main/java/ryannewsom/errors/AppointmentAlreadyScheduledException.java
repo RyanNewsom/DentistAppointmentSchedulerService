@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
  */
-@ResponseStatus(HttpStatus.ALREADY_REPORTED)
+@ResponseStatus(HttpStatus.GONE)
 public class AppointmentAlreadyScheduledException extends RuntimeException{
     public AppointmentAlreadyScheduledException(){
         super("Appointment no longer available");
