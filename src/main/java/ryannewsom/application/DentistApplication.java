@@ -8,70 +8,17 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import ryannewsom.model.appointment.Appointment;
-import ryannewsom.model.repos.MockAddresses;
+import ryannewsom.model.mock.MockOffices;
 import ryannewsom.model.users.User;
 import ryannewsom.model.users.entityinfo.ContactInfo;
 import ryannewsom.model.users.entityinfo.Office;
 
 import java.util.*;
 
-@Controller
 @SpringBootApplication
 public class DentistApplication implements CommandLineRunner {
     @Autowired
     private AppointmentService appointmentService;
-
-    @RequestMapping("/")
-    @ResponseBody
-    String home() {
-        return "Server Online";
-    }
-
-    @RequestMapping(value = "/Appointment", method = RequestMethod.GET)
-    @ResponseBody
-    List<Appointment> getAvailableAppointments() {
-        return appointmentService.findByUser(null);
-    }
-
-    @RequestMapping(value = "/Appointment/{appointmentId}", method = RequestMethod.POST)
-    @ResponseBody
-    void createAppointment(@PathVariable String appointmentId, @RequestBody Appointment appointment) {
-        if(appointmentId != null && appointmentId.equals(appointment.getAppointmentId())) {
-            Appointment unscheduledAppointment = appointmentService.findOne(appointmentId);
-            if (unscheduledAppointment == null) {
-                return;
-            }
-
-            if (unscheduledAppointment.getUser() == null) {
-                User patient = appointment.getUser();
-                patient.setUserId();
-                unscheduledAppointment.setUser(patient);
-                appointmentService.save(unscheduledAppointment);
-            }
-        } else {
-            return;
-        }
-    }
-
-    @RequestMapping(value = "/Appointment/{appointmentId}", method = RequestMethod.GET)
-    @ResponseBody
-    Appointment getAppointmentById(@PathVariable String appointmentId) {
-        return appointmentService.findOne(appointmentId);
-    }
-
-    @RequestMapping(value = "/Schedule", method = RequestMethod.GET)
-    @ResponseBody
-    List<Appointment> getScheduledAppointments() {
-        List<Appointment> all = appointmentService.findAll();
-        List<Appointment> scheduled = new ArrayList<>();
-        for(Appointment appointment: all){
-            if(appointment.getUser() != null){
-                scheduled.add(appointment);
-            }
-        }
-
-        return scheduled;
-    }
 
     public static void main(String[] args) {
         SpringApplication.run(DentistApplication.class, args);
@@ -92,7 +39,7 @@ public class DentistApplication implements CommandLineRunner {
     //Seeds Appointments for 1 year from Nov/17/2016
     private void seedAppointments() {
         //test comment
-        final Office office = new Office(new ContactInfo("3034541287", MockAddresses.OFFICE_1_ADDRESS));
+        final Office office = new Office(new ContactInfo("3034541287", MockOffices.OFFICE_1_ADDRESS));
         final long START_TIME = 1479654000000l;
         long ONE_YEAR_MS;
         long ONE_HOUR_MS = 3600000;
