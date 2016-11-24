@@ -2,7 +2,9 @@ package ryannewsom.application;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import ryannewsom.errors.AppointmentAlreadyScheduledException;
 import ryannewsom.errors.AppointmentNotFoundException;
+import ryannewsom.errors.MismatchIdsException;
 import ryannewsom.model.appointment.Appointment;
 import ryannewsom.model.users.User;
 
@@ -10,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * A REST controller to handle Dentist Appointment CRUD
  */
 @RestController
 public class DentistAppointmentRestController  {
@@ -31,20 +34,21 @@ public class DentistAppointmentRestController  {
     @RequestMapping(value = "/Appointment/{appointmentId}", method = RequestMethod.POST)
     @ResponseBody
     void createAppointment(@PathVariable String appointmentId, @RequestBody Appointment appointment) {
-        if(appointmentId != null && appointmentId.equals(appointment.getAppointmentId())) {
+        validateAppointment(appointmentId);
+
+        if(appointmentId.equals(appointment.getAppointmentId())) {
             Appointment unscheduledAppointment = appointmentService.findOne(appointmentId);
-            if (unscheduledAppointment == null) {
-                return;
-            }
 
             if (unscheduledAppointment.getUser() == null) {
                 User patient = appointment.getUser();
                 patient.setUserId();
                 unscheduledAppointment.setUser(patient);
                 appointmentService.save(unscheduledAppointment);
+            } else {
+                throw new AppointmentAlreadyScheduledException();
             }
-        } else {
-            return;
+        } else{
+            throw new MismatchIdsException();
         }
     }
 
@@ -54,15 +58,13 @@ public class DentistAppointmentRestController  {
         validateAppointment(appointmentId);
 
         return appointmentService.findOne(appointmentId);
-
-
     }
 
     private void validateAppointment(String appointmentId){
         boolean exists = appointmentService.exists(appointmentId);
 
         if(!exists){
-                throw new AppointmentNotFoundException(appointmentId);
+            throw new AppointmentNotFoundException(appointmentId);
         }
     }
 
