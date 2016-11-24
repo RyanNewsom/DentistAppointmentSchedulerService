@@ -18,7 +18,7 @@ public class User {
     private ContactInfo contactInfo;
 
     public User(){
-        
+
     }
 
     public User(String firstName, String lastName, ContactInfo contactInfo){
@@ -33,7 +33,7 @@ public class User {
     }
 
     public void setUserId() {
-        ObjectId.get().toString();;
+        userId = ObjectId.get().toString();;
     }
 
     public String getFirstName() {
