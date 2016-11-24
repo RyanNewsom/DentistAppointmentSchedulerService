@@ -20,6 +20,10 @@ public class Appointment {
     private Date time;
     private Office office;
 
+    public Appointment(){
+        
+    }
+
     public Appointment(User user, Date time, Office office){
         this.user = user;
         this.time = time;
