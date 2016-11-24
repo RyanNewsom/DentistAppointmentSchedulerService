@@ -11,6 +11,10 @@ public class Office {
     private String id;
     private ContactInfo contactInfo;
 
+    public Office(){
+
+    }
+
     public Office(ContactInfo contactInfo){
         this.contactInfo = contactInfo;
         this.id = ObjectId.get().toString();

@@ -12,6 +12,10 @@ public class ContactInfo {
     private String cellNumber;
     private PhysicalAddress physicalAddress;
 
+    public ContactInfo() {
+
+    }
+
     public ContactInfo(String cellNumber, PhysicalAddress physicalAddress){
         this.cellNumber = cellNumber;
         this.physicalAddress = physicalAddress;

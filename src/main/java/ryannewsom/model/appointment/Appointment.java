@@ -21,7 +21,7 @@ public class Appointment {
     private Office office;
 
     public Appointment(){
-        
+
     }
 
     public Appointment(User user, Date time, Office office){

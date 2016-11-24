@@ -12,6 +12,10 @@ public class PhysicalAddress {
     private String city;
     private String state;
 
+    public PhysicalAddress(){
+
+    }
+
     public PhysicalAddress(int streetNumber, String street, String city, String state, int zipCode){
         this.streetNumber = streetNumber;
         this.street = street;
