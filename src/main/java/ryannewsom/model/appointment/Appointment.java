@@ -2,6 +2,7 @@ package ryannewsom.model.appointment;
 
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.CompoundIndex;
 import org.springframework.data.mongodb.core.mapping.Document;
 import ryannewsom.model.users.User;
 import ryannewsom.model.users.entityinfo.Office;
@@ -9,10 +10,10 @@ import ryannewsom.model.users.entityinfo.Office;
 import java.util.Date;
 
 /**
- * Appointment
+ * Appointment for a service providing business
  */
 @Document
-public class Appointment {
+public class Appointment implements Comparable<Appointment>{
 
     @Id
     private String id;
@@ -20,10 +21,19 @@ public class Appointment {
     private Date time;
     private Office office;
 
+    /**
+     * Constructor
+     */
     public Appointment(){
 
     }
 
+    /**
+     * Constructor
+     * @param user - the customer
+     * @param time - the time of the appointment
+     * @param office - the office for the appointment
+     */
     public Appointment(User user, Date time, Office office){
         this.user = user;
         this.time = time;
@@ -62,5 +72,10 @@ public class Appointment {
                 ", mTime=" + time +
                 ", mOffice=" + office +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Appointment o) {
+        return time.compareTo(o.time);
     }
 }

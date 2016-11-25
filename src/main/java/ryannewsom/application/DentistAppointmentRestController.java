@@ -9,6 +9,8 @@ import ryannewsom.model.appointment.Appointment;
 import ryannewsom.model.users.User;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -78,6 +80,8 @@ public class DentistAppointmentRestController  {
                 scheduled.add(appointment);
             }
         }
+
+        Collections.sort(scheduled);
 
         return scheduled;
     }

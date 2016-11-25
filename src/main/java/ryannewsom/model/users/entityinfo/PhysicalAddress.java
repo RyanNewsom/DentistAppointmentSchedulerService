@@ -3,7 +3,7 @@ package ryannewsom.model.users.entityinfo;
 import org.springframework.data.annotation.Id;
 
 /**
- * Physical Address
+ * Physical Address of an entity
  */
 public class PhysicalAddress {
     private int streetNumber;
@@ -12,10 +12,21 @@ public class PhysicalAddress {
     private String city;
     private String state;
 
+    /**
+     * Constructor
+     */
     public PhysicalAddress(){
 
     }
 
+    /**
+     * Constructor
+     * @param streetNumber - the street number
+     * @param street - the street name
+     * @param city - the city
+     * @param state - the state
+     * @param zipCode- the zip code
+     */
     public PhysicalAddress(int streetNumber, String street, String city, String state, int zipCode){
         this.streetNumber = streetNumber;
         this.street = street;

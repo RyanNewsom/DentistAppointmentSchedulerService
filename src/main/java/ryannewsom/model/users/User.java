@@ -7,7 +7,7 @@ import org.springframework.data.annotation.Id;
 
 
 /**
- * User
+ * User/Customer for the business
  */
 @Document
 public class User {
@@ -17,10 +17,19 @@ public class User {
     private String lastName;
     private ContactInfo contactInfo;
 
+    /**
+     * Constructor
+     */
     public User(){
 
     }
 
+    /**
+     * Constructor
+     * @param firstName
+     * @param lastName
+     * @param contactInfo
+     */
     public User(String firstName, String lastName, ContactInfo contactInfo){
         this.firstName = firstName;
         this.lastName = lastName;
@@ -32,6 +41,9 @@ public class User {
         return userId;
     }
 
+    /**
+     * Generates a user id for this User
+     */
     public void setUserId() {
         userId = ObjectId.get().toString();;
     }

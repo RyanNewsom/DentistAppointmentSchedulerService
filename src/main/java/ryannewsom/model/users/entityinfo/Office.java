@@ -4,17 +4,24 @@ import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 
 /**
- * Office
+ * Office for a business
  */
 public class Office {
     @Id
     private String id;
     private ContactInfo contactInfo;
 
+    /**
+     * Constructor
+     */
     public Office(){
 
     }
 
+    /**
+     * Constructor
+     * @param contactInfo - contact info for the office
+     */
     public Office(ContactInfo contactInfo){
         this.contactInfo = contactInfo;
         this.id = ObjectId.get().toString();
