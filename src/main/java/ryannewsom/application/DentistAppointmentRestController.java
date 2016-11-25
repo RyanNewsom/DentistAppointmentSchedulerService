@@ -29,7 +29,18 @@ public class DentistAppointmentRestController  {
     @RequestMapping(value = "/Appointment", method = RequestMethod.GET)
     @ResponseBody
     List<Appointment> getAvailableAppointments() {
-        return appointmentRepository.findByUser(null);
+        List<Appointment> appointments =  appointmentRepository.findByUser(null);
+        List<Appointment> available = new ArrayList<>();
+
+        for(Appointment appointment: appointments){
+            if(!isOldAppointment(appointment)){
+                available.add(appointment);
+            } else{
+                appointmentRepository.delete(appointment);
+            }
+        }
+
+        return available;
     }
 
     @RequestMapping(value = "/Appointment/{appointmentId}", method = RequestMethod.POST)
@@ -83,5 +94,13 @@ public class DentistAppointmentRestController  {
         Collections.sort(scheduled);
 
         return scheduled;
+    }
+
+    private boolean isOldAppointment(Appointment appointment){
+        long currentTime = System.currentTimeMillis();
+        long appointmentTime = appointment.getTime().getTime();
+
+        return currentTime > appointmentTime;
+
     }
 }

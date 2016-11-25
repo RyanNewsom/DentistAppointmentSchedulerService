@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8f16942f-de4b-47b5-b36e-0b4b081c138f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ryannewsom/application/DentistApplication.java" afterPath="$PROJECT_DIR$/src/main/java/ryannewsom/application/DentistApplication.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ryannewsom/application/DentistAppointmentRestController.java" afterPath="$PROJECT_DIR$/src/main/java/ryannewsom/application/DentistAppointmentRestController.java" />
     </list>
     <ignored path="DentistApp.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -68,8 +69,8 @@
       <file leaf-file-name="DentistApplication.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/ryannewsom/application/DentistApplication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.41125542">
-              <caret line="43" column="46" selection-start-line="43" selection-start-column="46" selection-end-line="43" selection-end-column="46" />
+            <state vertical-scroll-proportion="0.56277055">
+              <caret line="43" column="58" selection-start-line="43" selection-start-column="58" selection-end-line="43" selection-end-column="58" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -103,7 +104,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/ryannewsom/application/DentistAppointmentRestController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="65" column="0" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+              <caret line="38" column="56" selection-start-line="38" selection-start-column="56" selection-end-line="38" selection-end-column="56" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -179,10 +180,10 @@
         <option value="$PROJECT_DIR$/src/main/java/ryannewsom/model/users/entityinfo/Office.java" />
         <option value="$PROJECT_DIR$/src/main/java/ryannewsom/model/users/entityinfo/PhysicalAddress.java" />
         <option value="$PROJECT_DIR$/src/main/java/ryannewsom/model/users/User.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ryannewsom/application/DentistAppointmentRestController.java" />
         <option value="$PROJECT_DIR$/src/main/java/ryannewsom/application/AppointmentService.java" />
         <option value="$PROJECT_DIR$/src/main/java/ryannewsom/application/AppointmentRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/ryannewsom/model/appointment/Appointment.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ryannewsom/application/DentistAppointmentRestController.java" />
         <option value="$PROJECT_DIR$/src/main/java/ryannewsom/application/DentistApplication.java" />
       </list>
     </option>
@@ -1246,16 +1247,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ryannewsom/application/DentistAppointmentRestController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="65" column="0" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ryannewsom/application/AppointmentRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1278,10 +1269,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ryannewsom/application/DentistAppointmentRestController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="38" column="56" selection-start-line="38" selection-start-column="56" selection-end-line="38" selection-end-column="56" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ryannewsom/application/DentistApplication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41125542">
-          <caret line="43" column="46" selection-start-line="43" selection-start-column="46" selection-end-line="43" selection-end-column="46" />
+        <state vertical-scroll-proportion="0.56277055">
+          <caret line="43" column="58" selection-start-line="43" selection-start-column="58" selection-end-line="43" selection-end-column="58" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
