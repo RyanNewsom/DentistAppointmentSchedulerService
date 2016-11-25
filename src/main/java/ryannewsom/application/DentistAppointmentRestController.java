@@ -9,7 +9,6 @@ import ryannewsom.model.appointment.Appointment;
 import ryannewsom.model.users.User;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -19,7 +18,7 @@ import java.util.List;
 @RestController
 public class DentistAppointmentRestController  {
     @Autowired
-    private AppointmentService appointmentService;
+    private AppointmentRepository appointmentRepository;
 
     @RequestMapping("/")
     @ResponseBody
@@ -30,7 +29,7 @@ public class DentistAppointmentRestController  {
     @RequestMapping(value = "/Appointment", method = RequestMethod.GET)
     @ResponseBody
     List<Appointment> getAvailableAppointments() {
-        return appointmentService.findByUser(null);
+        return appointmentRepository.findByUser(null);
     }
 
     @RequestMapping(value = "/Appointment/{appointmentId}", method = RequestMethod.POST)
@@ -39,13 +38,13 @@ public class DentistAppointmentRestController  {
         validateAppointment(appointmentId);
 
         if(appointmentId.equals(appointment.getAppointmentId())) {
-            Appointment unscheduledAppointment = appointmentService.findOne(appointmentId);
+            Appointment unscheduledAppointment = appointmentRepository.findOne(appointmentId);
 
             if (unscheduledAppointment.getUser() == null) {
                 User patient = appointment.getUser();
                 patient.setUserId();
                 unscheduledAppointment.setUser(patient);
-                appointmentService.save(unscheduledAppointment);
+                appointmentRepository.save(unscheduledAppointment);
             } else {
                 throw new AppointmentAlreadyScheduledException();
             }
@@ -59,11 +58,11 @@ public class DentistAppointmentRestController  {
     Appointment getAppointmentById(@PathVariable String appointmentId) {
         validateAppointment(appointmentId);
 
-        return appointmentService.findOne(appointmentId);
+        return appointmentRepository.findOne(appointmentId);
     }
 
     private void validateAppointment(String appointmentId){
-        boolean exists = appointmentService.exists(appointmentId);
+        boolean exists = appointmentRepository.exists(appointmentId);
 
         if(!exists){
             throw new AppointmentNotFoundException(appointmentId);
@@ -73,7 +72,7 @@ public class DentistAppointmentRestController  {
     @RequestMapping(value = "/Schedule", method = RequestMethod.GET)
     @ResponseBody
     List<Appointment> getScheduledAppointments() {
-        List<Appointment> all = appointmentService.findAll();
+        List<Appointment> all = appointmentRepository.findAll();
         List<Appointment> scheduled = new ArrayList<>();
         for(Appointment appointment: all){
             if(appointment.getUser() != null){

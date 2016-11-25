@@ -5,23 +5,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
 import ryannewsom.model.appointment.Appointment;
 import ryannewsom.model.mock.MockOffices;
-import ryannewsom.model.users.User;
 import ryannewsom.model.users.entityinfo.ContactInfo;
 import ryannewsom.model.users.entityinfo.Office;
 
 import java.util.*;
 
 /**
- * A Dentist's office Backend, It's main service, AppointmentService, is injected via Dependency Injection.
+ * A Dentist's office Backend, It's main service, AppointmentRepository, is injected via Dependency Injection.
  */
 @SpringBootApplication
 public class DentistApplication implements CommandLineRunner {
     @Autowired
-    private AppointmentService appointmentService;
+    private AppointmentRepository appointmentRepository;
 
     public static void main(String[] args) {
         SpringApplication.run(DentistApplication.class, args);
@@ -30,21 +27,21 @@ public class DentistApplication implements CommandLineRunner {
     @Override
     public void run(String... strings) throws Exception {
         //clean the db
-        appointmentService.deleteAll();
+        appointmentRepository.deleteAll();
         seedAppointments();
         System.out.println("Appointments found");
         System.out.println("------------------");
 
-        for(Appointment a : appointmentService.findAll()){
+        for(Appointment a : appointmentRepository.findAll()){
             System.out.println(a);
         }
     }
 
-    //Seeds Appointments for 1 year from Nov/17/2016
+    //Seeds Appointments for 1 year from today
     private void seedAppointments() {
         final Office office = new Office(new ContactInfo("3034541287", MockOffices.OFFICE_1_ADDRESS));
-        final long START_TIME = 1479654000000l;
         long ONE_HOUR_MS = 3600000;
+        final long START_TIME = System.currentTimeMillis() + ONE_HOUR_MS * 24;
         long ONE_YEAR_MS;
         ONE_YEAR_MS = ONE_HOUR_MS * 24 * 365;
         long endTime = START_TIME + ONE_YEAR_MS;
@@ -65,7 +62,7 @@ public class DentistApplication implements CommandLineRunner {
                 if(hourOfDay >= 8 && hourOfDay <= 17){
                     System.out.println("Seeding...");
                     Appointment appointment = new Appointment(null, current, office);
-                    appointmentService.save(appointment);
+                    appointmentRepository.save(appointment);
                 }
             }
         }
