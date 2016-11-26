@@ -13,7 +13,7 @@ import ryannewsom.model.users.entityinfo.Office;
 import java.util.*;
 
 /**
- * A Dentist's office Backend, It's main service, AppointmentRepository, is injected via Dependency Injection.
+ * A Dentist's office Backend, It's main service, AppointmentRepository, is injected via Dependency Injection...
  */
 @SpringBootApplication
 public class DentistApplication implements CommandLineRunner {
