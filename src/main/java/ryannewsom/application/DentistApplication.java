@@ -14,7 +14,7 @@ import java.util.*;
 
 /**
  * A Dentist's office Backend, It's main service, AppointmentRepository, is injected via Dependency Injection......
- * by :Ryan Newsom
+ * by :Ryan Newsom ...
  */
 @SpringBootApplication
 public class DentistApplication implements CommandLineRunner {
