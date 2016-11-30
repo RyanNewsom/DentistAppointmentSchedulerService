@@ -2,6 +2,7 @@ package ryannewsom.application;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import ryannewsom.model.appointment.Appointment;
 import ryannewsom.model.users.User;
 
@@ -14,6 +15,7 @@ import java.util.List;
  * I used MongoRepository to allow for direct db implementation functionality.
  */
 @Repository
+@Transactional
 public interface AppointmentRepository extends MongoRepository<Appointment, String> {
     public List<Appointment> findByUser(User user);
 }
