@@ -1,6 +1,7 @@
 package ryannewsom.application;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import ryannewsom.errors.AppointmentAlreadyScheduledException;
 import ryannewsom.errors.AppointmentNotFoundException;
@@ -49,7 +50,8 @@ public class DentistAppointmentRestController  {
         validateAppointment(appointmentId);
 
         if(appointmentId.equals(appointment.getAppointmentId())) {
-            Appointment unscheduledAppointment = appointmentRepository.findOne(appointmentId);
+             //appointmentRepository.findOne(appointmentId);
+            Appointment unscheduledAppointment = appointmentRepository.findOneAndDelete(appointmentId);
 
             if (unscheduledAppointment.getUser() == null) {
                 User patient = appointment.getUser();
