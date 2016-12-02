@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import ryannewsom.model.appointment.Appointment;
 
 /**
- * Provides Custom Mongo Specific Implementation
+ * Provides Custom Mongo Specific Implementation. 
  */
 @Repository
 public class AppointmentCustomRepository {
