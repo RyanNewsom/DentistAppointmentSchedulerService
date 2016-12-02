@@ -15,7 +15,7 @@ import java.util.List;
  * I used MongoRepository to allow for direct db implementation functionality.
  */
 @Repository
+@Transactional
 public interface AppointmentRepository extends MongoRepository<Appointment, String> {
     public List<Appointment> findByUser(User user);
-    public Appointment findOneAndDelete(String id);
 }
