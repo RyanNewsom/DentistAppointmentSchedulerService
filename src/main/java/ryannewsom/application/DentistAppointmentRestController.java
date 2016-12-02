@@ -20,6 +20,9 @@ public class DentistAppointmentRestController  {
     @Autowired
     private AppointmentRepository appointmentRepository;
 
+    @Autowired
+    private AppointmentCustomRepository appointmentCustomRepository;
+
     @RequestMapping("/")
     @ResponseBody
     String home() {
@@ -49,7 +52,7 @@ public class DentistAppointmentRestController  {
         validateAppointment(appointmentId);
 
         if(appointmentId.equals(appointment.getAppointmentId())) {
-            Appointment unscheduledAppointment = appointmentRepository.findOne(appointmentId);
+            Appointment unscheduledAppointment = appointmentCustomRepository.getAppointmentAndDelete(appointmentId);
 
             if (unscheduledAppointment.getUser() == null) {
                 User patient = appointment.getUser();
