@@ -16,6 +16,6 @@ public class AppointmentCustomRepository {
     MongoTemplate mongoTemplate;
 
     public Appointment getAppointmentAndDelete(String id) {
-        return mongoTemplate.findAndRemove(Query.query(Criteria.where("id").is(id)), Appointment.class);
+        return mongoTemplate.findAndRemove(Query.query(Criteria.where("id").is(id).and("user").is(null)), Appointment.class);
     }
 }
