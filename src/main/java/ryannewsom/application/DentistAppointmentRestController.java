@@ -54,6 +54,10 @@ public class DentistAppointmentRestController  {
         if(appointmentId.equals(appointment.getAppointmentId())) {
             Appointment unscheduledAppointment = appointmentCustomRepository.getAppointmentAndDelete(appointmentId);
 
+            if(unscheduledAppointment == null){
+                throw new AppointmentAlreadyScheduledException();
+            }
+
             if (unscheduledAppointment.getUser() == null) {
                 User patient = appointment.getUser();
                 patient.setUserId();
